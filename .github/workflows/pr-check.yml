@@ -1,0 +1,24 @@
+name: PR Check
+ 
+on:
+  pull_request:
+    branches:
+      - main
+ 
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+ 
+      - name: Confirm files exist
+        run: |
+          echo "Files in this repo:"
+          ls -la
+ 
+      - name: PR info
+        run: |
+          echo "PR triggered by: ${{ github.actor }}"
+          echo "Branch: ${{ github.head_ref }}"
+          echo "Target: ${{ github.base_ref }}"
